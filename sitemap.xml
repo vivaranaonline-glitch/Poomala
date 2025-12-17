@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+    
+    <!-- Poomala Tourism - https://poomala.online -->
+    <!-- Sitemap for Ancient South Indian Heritage Tourism Website -->
+    <!-- Generated: 2025-12-17 -->
+    
+    <!-- Home Page - Highest Priority -->
+    <url>
+        <loc>https://poomala.online/</loc>
+        <lastmod>2025-12-17</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <!-- About Poomala Section -->
+    <url>
+        <loc>https://poomala.online/#about</loc>
+        <lastmod>2025-12-17</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    
+    <!-- Resorts Section -->
+    <url>
+        <loc>https://poomala.online/#resorts</loc>
+        <lastmod>2025-12-17</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    
+    <!-- Individual Resort Pages -->
+    <url>
+        <loc>https://poomala.online/#stone-heritage-resort</loc>
+        <lastmod>2025-12-17</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <url>
+        <loc>https://poomala.online/#forest-canopy-retreat</loc>
+        <lastmod>2025-12-17</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <url>
+        <loc>https://poomala.online/#lakeside-serenity-haven</loc>
+        <lastmod>2025-12-17</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <!-- Gallery Section -->
+    <url>
+        <loc>https://poomala.online/#gallery</loc>
+        <lastmod>2025-12-17</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <!-- Tourist Attractions Section -->
+    <url>
+        <loc>https://poomala.online/#attractions</loc>
+        <lastmod>2025-12-17</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <!-- Individual Attractions -->
+    <url>
+        <loc>https://poomala.online/#ancient-stone-temples</loc>
+        <lastmod>2025-12-17</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <url>
+        <loc>https://poomala.online/#heritage-walking-trails</loc>
+        <lastmod>2025-12-17</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <url>
+        <loc>https://poomala.online/#traditional-craft-villages</loc>
+        <lastmod>2025-12-17</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <url>
+        <loc>https://poomala.online/#natural-water-bodies</loc>
+        <lastmod>2025-12-17</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <!-- Contact Section -->
+    <url>
+        <loc>https://poomala.online/#contact</loc>
+        <lastmod>2025-12-17</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <!-- WhatsApp Booking Link -->
+    <url>
+        <loc>https://wa.me/918921305929</loc>
+        <lastmod>2025-12-17</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    
+    <!-- Future Pages (Placeholders) -->
+    <url>
+        <loc>https://poomala.online/privacy-policy.html</loc>
+        <lastmod>2025-12-17</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    
+    <url>
+        <loc>https://poomala.online/terms-of-service.html</loc>
+        <lastmod>2025-12-17</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    
+    <url>
+        <loc>https://poomala.online/contact-us.html</loc>
+        <lastmod>2025-12-17</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+    <url>
+        <loc>https://poomala.online/about-kerala.html</loc>
+        <lastmod>2025-12-17</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    
+</urlset>
