@@ -1,0 +1,52 @@
+# Poomala Tourism - Robots.txt
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /private/
+Disallow: /tmp/
+Disallow: /cgi-bin/
+Disallow: /wp-admin/
+Disallow: /wp-includes/
+
+# Sitemap location
+Sitemap: https://poomala.online/sitemap.xml
+
+# Crawl delay to prevent server overload
+Crawl-delay: 2
+
+# Allow image crawling for better visual search
+Allow: /*.jpg$
+Allow: /*.png$
+Allow: /*.gif$
+
+# Specific bot instructions
+User-agent: Googlebot
+Allow: /
+Disallow: /admin/
+Allow: /*.css$
+Allow: /*.js$
+
+User-agent: Googlebot-Image
+Allow: /*.jpg$
+Allow: /*.png$
+Allow: /*.gif$
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 3
+Allow: /*.css$
+Allow: /*.js$
+
+User-agent: DuckDuckBot
+Allow: /
+Disallow: /admin/
+
+# Block unwanted bots
+User-agent: Baiduspider
+Disallow: /
+
+User-agent: Yandex
+Disallow: /
+
+User-agent: MJ12bot
+Crawl-delay: 10
