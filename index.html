@@ -1,0 +1,1387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poomala Tourism | Ancient South Indian Heritage Retreat</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Cormorant+SC:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            /* Ancient South Indian Color Palette inspired by aged stone, temple walls and earth tones */
+            --sandstone-beige: #d8c9b4;
+            --antique-ivory: #f5f0e1;
+            --temple-brown: #7a624d;
+            --muted-maroon: #8b3a3a;
+            --oxidized-bronze: #6b5a4d;
+            --old-gold: #c19a3f;
+            --aged-shadow: rgba(70, 11, 47, 0.1);
+            --earth-dark: #460b2f;
+            
+            /* Typography */
+            --serif-font: 'Cormorant Garamond', serif;
+            --title-font: 'Cormorant SC', serif;
+            
+            /* Spacing */
+            --section-padding: 5rem 1.5rem;
+            --container-max: 1200px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+            font-size: 18px;
+        }
+        
+        /* CHANGE 1: Darker background color */
+        body {
+            font-family: var(--serif-font);
+            background-color: #2a0b1f; /* Darker background */
+            color: var(--old-gold); /* CHANGE 3: Golden color for text */
+            line-height: 1.7;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://images.unsplash.com/photo-1548013146-72479768bada?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=30');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.03;
+            z-index: -1;
+            pointer-events: none;
+        }
+        
+        /* Loading Animation - Simple abstract circular form inspired by ancient stone carvings */
+        #loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #2a0b1f; /* Darker background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 1s ease;
+        }
+        
+        .loading-element {
+            width: 80px;
+            height: 80px;
+            border: 3px solid transparent;
+            border-top: 3px solid var(--old-gold);
+            border-radius: 50%;
+            animation: gentleRotate 3s ease-in-out infinite;
+            position: relative;
+        }
+        
+        .loading-element::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+            border: 2px solid transparent;
+            border-bottom: 2px solid var(--muted-maroon);
+            border-radius: 50%;
+            animation: gentleRotateReverse 2.5s ease-in-out infinite;
+        }
+        
+        @keyframes gentleRotate {
+            0%, 100% { transform: rotate(0deg); }
+            50% { transform: rotate(180deg); }
+        }
+        
+        @keyframes gentleRotateReverse {
+            0%, 100% { transform: rotate(0deg); }
+            50% { transform: rotate(-180deg); }
+        }
+        
+        /* CHANGE 2: Smaller navigation bar with golden text */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(42, 11, 31, 0.95); /* Darker background */
+            backdrop-filter: blur(12px); /* Enhanced blur */
+            z-index: 1000;
+            border-bottom: 2px solid rgba(193, 154, 63, 0.2); /* Gold border */
+            padding: 0.5rem 2rem; /* Smaller padding */
+            transition: all 0.5s ease;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .header-container {
+            max-width: var(--container-max);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: var(--title-font);
+            font-size: 1.8rem; /* Slightly smaller */
+            font-weight: 600;
+            color: var(--old-gold); /* Golden color */
+            letter-spacing: 1px;
+            text-decoration: none;
+            position: relative;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .logo::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background-color: var(--old-gold);
+            transform: scaleX(0);
+            transition: transform 0.5s ease;
+        }
+        
+        .logo:hover::after {
+            transform: scaleX(1);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem; /* Reduced gap */
+        }
+        
+        nav a {
+            font-family: var(--title-font);
+            font-size: 1rem; /* Smaller font */
+            color: var(--old-gold); /* CHANGE 3: Golden color for text */
+            text-decoration: none;
+            position: relative;
+            padding: 0.4rem 0.8rem; /* Adjusted padding */
+            transition: all 0.3s ease;
+            letter-spacing: 0.5px;
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--old-gold);
+            transition: width 0.5s ease;
+        }
+        
+        nav a:hover {
+            color: #e6b84f; /* Lighter gold on hover */
+            text-shadow: 0 0 10px rgba(193, 154, 63, 0.3);
+        }
+        
+        nav a:hover::after {
+            width: 100%;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--old-gold); /* Golden color */
+            cursor: pointer;
+        }
+        
+        /* Hero Section - Full-screen immersive experience */
+        .hero {
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--antique-ivory);
+        }
+        
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://images.unsplash.com/photo-1548013146-72479768bada?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=40');
+            background-size: cover;
+            background-position: center;
+            z-index: -2;
+            transform: scale(1.05);
+            transition: transform 15s ease;
+        }
+        
+        .hero:hover .hero-background {
+            transform: scale(1.08);
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(70, 11, 47, 0.4), rgba(70, 11, 47, 0.2));
+            z-index: -1;
+        }
+        
+        .hero-content {
+            max-width: 900px;
+            padding: 2rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: dignifiedFadeIn 2.5s ease forwards 0.5s;
+        }
+        
+        @keyframes dignifiedFadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .hero h1 {
+            font-family: var(--title-font);
+            font-size: 4.5rem;
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
+            line-height: 1.2;
+            color: var(--old-gold); /* CHANGE 3: Golden color for text */
+        }
+        
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 300;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+            color: var(--antique-ivory);
+        }
+        
+        .hero-cta {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background-color: transparent;
+            color: var(--old-gold); /* CHANGE 3: Golden color for text */
+            border: 2px solid var(--old-gold); /* CHANGE 3: Golden border */
+            font-family: var(--title-font);
+            font-size: 1.2rem;
+            text-decoration: none;
+            letter-spacing: 1px;
+            transition: all 0.5s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(193, 154, 63, 0.1);
+            transition: left 0.6s ease;
+        }
+        
+        .hero-cta:hover {
+            background-color: rgba(193, 154, 63, 0.1);
+            border-color: #e6b84f; /* Lighter gold */
+            color: #e6b84f; /* Lighter gold */
+        }
+        
+        .hero-cta:hover::before {
+            left: 100%;
+        }
+        
+        /* Main Content Sections */
+        section {
+            padding: var(--section-padding);
+            position: relative;
+        }
+        
+        .section-container {
+            max-width: var(--container-max);
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            font-family: var(--title-font);
+            font-size: 3rem;
+            font-weight: 400;
+            color: var(--old-gold); /* CHANGE 3: Golden color for text */
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 2px;
+            background-color: var(--old-gold);
+        }
+        
+        .section-title.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .section-content {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: var(--sandstone-beige); /* Lighter color for better contrast on dark */
+            max-width: 900px;
+            margin: 0 auto 3rem;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease 0.2s, transform 0.8s ease 0.2s;
+        }
+        
+        .section-content.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* About Section */
+        .about-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+        
+        .feature-item {
+            text-align: center;
+            padding: 2rem;
+            background-color: rgba(42, 11, 31, 0.7); /* Darker background */
+            border-radius: 2px;
+            border: 1px solid rgba(193, 154, 63, 0.2); /* Gold border */
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+            opacity: 0;
+            transform: translateY(30px);
+            color: var(--sandstone-beige); /* Lighter text */
+        }
+        
+        .feature-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .feature-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(193, 154, 63, 0.15);
+            border-color: var(--old-gold);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--old-gold);
+            margin-bottom: 1.5rem;
+        }
+        
+        .feature-title {
+            font-family: var(--title-font);
+            font-size: 1.8rem;
+            color: var(--old-gold); /* CHANGE 3: Golden color for text */
+            margin-bottom: 1rem;
+        }
+        
+        /* Resorts Section */
+        .resorts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+        
+        .resort-card {
+            background-color: rgba(42, 11, 31, 0.7); /* Darker background */
+            border-radius: 2px;
+            overflow: hidden;
+            border: 1px solid rgba(193, 154, 63, 0.2); /* Gold border */
+            transition: transform 0.8s ease, box-shadow 0.8s ease;
+            opacity: 0;
+            transform: translateY(40px);
+            position: relative;
+            color: var(--sandstone-beige); /* Lighter text */
+        }
+        
+        .resort-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .resort-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent 60%, rgba(70, 11, 47, 0.1));
+            z-index: 1;
+            pointer-events: none;
+        }
+        
+        .resort-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(193, 154, 63, 0.2);
+            border-color: var(--old-gold);
+        }
+        
+        .resort-image {
+            height: 250px;
+            width: 100%;
+            object-fit: cover;
+            filter: sepia(0.2) brightness(0.95);
+            transition: transform 8s ease;
+        }
+        
+        .resort-card:hover .resort-image {
+            transform: scale(1.05);
+        }
+        
+        .resort-content {
+            padding: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .resort-name {
+            font-family: var(--title-font);
+            font-size: 2rem;
+            color: var(--old-gold); /* CHANGE 3: Golden color for text */
+            margin-bottom: 1rem;
+        }
+        
+        .resort-description {
+            margin-bottom: 1.5rem;
+            color: var(--sandstone-beige); /* Lighter text */
+            line-height: 1.7;
+        }
+        
+        .book-button {
+            display: inline-block;
+            padding: 0.8rem 1.8rem;
+            background-color: var(--muted-maroon);
+            color: var(--antique-ivory);
+            font-family: var(--title-font);
+            text-decoration: none;
+            border: none;
+            font-size: 1.1rem;
+            letter-spacing: 0.5px;
+            transition: all 0.5s ease;
+            cursor: pointer;
+            border-radius: 1px;
+        }
+        
+        .book-button:hover {
+            background-color: var(--earth-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 16px rgba(70, 11, 47, 0.2);
+        }
+        
+        /* Gallery Section */
+        .gallery-container {
+            max-width: 1200px;
+            margin: 4rem auto 0;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(193, 154, 63, 0.3); /* Gold border */
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .gallery-main {
+            height: 500px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .gallery-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1.5s ease, transform 1.5s ease;
+            transform: translateX(30px);
+        }
+        
+        .gallery-slide.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .gallery-slide.leaving {
+            opacity: 0;
+            transform: translateX(-30px);
+        }
+        
+        .gallery-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: sepia(0.3) contrast(1.1) brightness(0.95);
+        }
+        
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 2rem;
+            background: linear-gradient(to top, rgba(70, 11, 47, 0.7), transparent);
+            color: var(--antique-ivory);
+            z-index: 3;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: transform 1s ease, opacity 1s ease;
+        }
+        
+        .gallery-slide.active .gallery-overlay {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .gallery-title {
+            font-family: var(--title-font);
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: var(--old-gold); /* CHANGE 3: Golden color for text */
+        }
+        
+        .gallery-controls {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .gallery-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(123, 98, 77, 0.3);
+            border: none;
+            cursor: pointer;
+            transition: all 0.5s ease;
+        }
+        
+        .gallery-dot.active {
+            background-color: var(--muted-maroon);
+            transform: scale(1.3);
+        }
+        
+        .gallery-dot:hover {
+            background-color: var(--old-gold);
+        }
+        
+        .gallery-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(42, 11, 31, 0.8); /* Darker background */
+            color: var(--old-gold); /* Golden color */
+            border: none;
+            width: 50px;
+            height: 50px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 4;
+            transition: all 0.5s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(193, 154, 63, 0.3); /* Gold border */
+        }
+        
+        .gallery-nav:hover {
+            background-color: rgba(42, 11, 31, 0.95);
+            color: var(--muted-maroon);
+            border-color: var(--muted-maroon);
+        }
+        
+        .gallery-prev {
+            left: 20px;
+        }
+        
+        .gallery-next {
+            right: 20px;
+        }
+        
+        /* Tourist Attractions */
+        .attractions-list {
+            max-width: 900px;
+            margin: 4rem auto 0;
+        }
+        
+        .attraction-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 4rem;
+            opacity: 0;
+            transform: translateX(-30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .attraction-item.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .attraction-item:nth-child(even) {
+            flex-direction: row-reverse;
+            transform: translateX(30px);
+        }
+        
+        .attraction-item:nth-child(even).visible {
+            transform: translateX(0);
+        }
+        
+        .attraction-image {
+            width: 45%;
+            height: 300px;
+            object-fit: cover;
+            filter: sepia(0.2) brightness(0.9);
+            border-radius: 2px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .attraction-content {
+            width: 55%;
+            padding: 2rem;
+            color: var(--sandstone-beige); /* Lighter text */
+        }
+        
+        .attraction-name {
+            font-family: var(--title-font);
+            font-size: 2.2rem;
+            color: var(--old-gold); /* CHANGE 3: Golden color for text */
+            margin-bottom: 1rem;
+        }
+        
+        /* Contact Section */
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+        
+        .contact-item {
+            text-align: center;
+            padding: 2rem;
+            background-color: rgba(42, 11, 31, 0.7); /* Darker background */
+            border-radius: 2px;
+            border: 1px solid rgba(193, 154, 63, 0.2); /* Gold border */
+            color: var(--sandstone-beige); /* Lighter text */
+        }
+        
+        .contact-icon {
+            font-size: 2.5rem;
+            color: var(--old-gold);
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-title {
+            font-family: var(--title-font);
+            font-size: 1.5rem;
+            color: var(--old-gold); /* CHANGE 3: Golden color for text */
+            margin-bottom: 1rem;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--earth-dark);
+            color: var(--old-gold); /* CHANGE 3: Golden color for text */
+            padding: 4rem 1.5rem 2rem;
+            text-align: center;
+            border-top: 3px solid var(--old-gold);
+        }
+        
+        .footer-container {
+            max-width: var(--container-max);
+            margin: 0 auto;
+        }
+        
+        .footer-logo {
+            font-family: var(--title-font);
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--old-gold); /* CHANGE 3: Golden color for text */
+        }
+        
+        .footer-text {
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            line-height: 1.8;
+            opacity: 0.9;
+            color: var(--sandstone-beige); /* Lighter text */
+        }
+        
+        .copyright {
+            padding-top: 2rem;
+            border-top: 1px solid rgba(193, 154, 63, 0.2); /* Gold border */
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+            }
+            
+            .attraction-item {
+                flex-direction: column;
+                transform: translateY(30px) !important;
+            }
+            
+            .attraction-item.visible {
+                transform: translateY(0) !important;
+            }
+            
+            .attraction-image, .attraction-content {
+                width: 100%;
+            }
+            
+            .attraction-image {
+                margin-bottom: 2rem;
+                height: 250px;
+            }
+            
+            .gallery-main {
+                height: 400px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            header {
+                padding: 0.8rem 1rem; /* Smaller on mobile */
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            nav ul {
+                position: fixed;
+                top: 60px; /* Adjusted for smaller header */
+                left: 0;
+                width: 100%;
+                background-color: rgba(42, 11, 31, 0.98); /* Darker background */
+                flex-direction: column;
+                padding: 1.5rem;
+                gap: 1rem;
+                transform: translateY(-100%);
+                opacity: 0;
+                transition: transform 0.5s ease, opacity 0.5s ease;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+                border-top: 2px solid rgba(193, 154, 63, 0.3); /* Gold border */
+            }
+            
+            nav ul.active {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .section-title {
+                font-size: 2.2rem;
+                margin-bottom: 3rem;
+            }
+            
+            .resorts-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .gallery-main {
+                height: 300px;
+            }
+            
+            .gallery-nav {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .feature-item, .resort-card, .contact-item {
+                padding: 1.5rem;
+            }
+            
+            .gallery-main {
+                height: 250px;
+            }
+        }
+        
+        /* Ancient visual effects */
+        .film-grain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" opacity="0.03"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23noise)"/></svg>');
+            pointer-events: none;
+            z-index: 9998;
+            mix-blend-mode: overlay;
+        }
+        
+        .vignette {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9997;
+            box-shadow: inset 0 0 150px rgba(70, 11, 47, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Animation -->
+    <div id="loading-overlay">
+        <div class="loading-element"></div>
+    </div>
+    
+    <!-- Ancient visual effects -->
+    <div class="film-grain"></div>
+    <div class="vignette"></div>
+    
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo">Poomala</a>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav>
+                <ul id="mainNav">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#resorts">Resorts</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#attractions">Attractions</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-background"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Poomala Tourism</h1>
+            <p>A timeless journey through ancient South Indian heritage, nestled in the heart of Thrissur, Kerala.</p>
+            <a href="#about" class="hero-cta">Discover the Serenity</a>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section id="about">
+        <div class="section-container">
+            <h2 class="section-title">About Poomala</h2>
+            <div class="section-content">
+                <p>Poomala is a hidden gem in the cultural heartland of Kerala, where time seems to stand still. Nestled amidst rolling hills and lush greenery, this ancient settlement offers a glimpse into South India's rich heritage and spiritual legacy.</p>
+                <p>Far from the modern world's hustle, Poomala invites you to experience a way of life that has remained unchanged for centuries, where tradition, nature, and spirituality exist in perfect harmony.</p>
+            </div>
+            
+            <div class="about-features">
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-mountain"></i>
+                    </div>
+                    <h3 class="feature-title">Ancient Landscape</h3>
+                    <p>Rolling hills, pristine water bodies, and stone pathways that whisper tales of a bygone era.</p>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-hands-praying"></i>
+                    </div>
+                    <h3 class="feature-title">Spiritual Heritage</h3>
+                    <p>Centuries-old traditions and practices that continue to thrive in this peaceful sanctuary.</p>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3 class="feature-title">Natural Sanctuary</h3>
+                    <p>A biodiverse ecosystem where rare flora and fauna coexist with traditional human settlements.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Resorts Section -->
+    <section id="resorts" style="background-color: rgba(42, 11, 31, 0.3);">
+        <div class="section-container">
+            <h2 class="section-title">Heritage Retreats</h2>
+            <div class="section-content">
+                <p>Experience timeless hospitality at our curated heritage resorts, where ancient architectural wisdom meets serene natural surroundings. Each retreat is designed to offer complete immersion into Poomala's tranquil atmosphere.</p>
+            </div>
+            
+            <div class="resorts-grid">
+                <!-- Resort 1 -->
+                <div class="resort-card">
+                    <img src="https://images.unsplash.com/photo-1613977257363-707ba9348227?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=70" alt="Stone Heritage Resort" class="resort-image">
+                    <div class="resort-content">
+                        <h3 class="resort-name">Stone Heritage Resort</h3>
+                        <p class="resort-description">Built using ancient stone masonry techniques, this resort blends seamlessly with the rocky landscape. Traditional courtyards and water features create a microclimate of cool serenity.</p>
+                        <a href="#" class="book-button" data-resort="Stone Heritage Resort">Book Now</a>
+                    </div>
+                </div>
+                
+                <!-- Resort 2 -->
+                <div class="resort-card">
+                    <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=70" alt="Forest Canopy Retreat" class="resort-image">
+                    <div class="resort-content">
+                        <h3 class="resort-name">Forest Canopy Retreat</h3>
+                        <p class="resort-description">Nestled amidst ancient trees, this retreat offers tree-house accommodations connected by wooden walkways. Wake up to the sounds of birds and rustling leaves.</p>
+                        <a href="#" class="book-button" data-resort="Forest Canopy Retreat">Book Now</a>
+                    </div>
+                </div>
+                
+                <!-- Resort 3 -->
+                <div class="resort-card">
+                    <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Lakeside Serenity Haven" class="resort-image">
+                    <div class="resort-content">
+                        <h3 class="resort-name">Lakeside Serenity Haven</h3>
+                        <p class="resort-description">Overlooking a pristine natural lake, this resort features traditional thatched cottages with private verandas. Evening lamps reflect on the water, creating a magical atmosphere.</p>
+                        <a href="#" class="book-button" data-resort="Lakeside Serenity Haven">Book Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Gallery Section -->
+    <section id="gallery">
+        <div class="section-container">
+            <h2 class="section-title">Ancient Visual Archive</h2>
+            <div class="section-content">
+                <p>Step into Poomala's visual history through these preserved moments that capture the essence of this ancient South Indian settlement.</p>
+            </div>
+            
+            <div class="gallery-container">
+                <div class="gallery-main">
+                    <!-- Slide 1 -->
+                    <div class="gallery-slide active">
+                        <img src="https://images.unsplash.com/photo-1548013146-72479768bada?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=70" alt="Ancient Stone Pathway" class="gallery-image">
+                        <div class="gallery-overlay">
+                            <h3 class="gallery-title">Ancient Stone Pathway</h3>
+                            <p>Centuries-old pathway leading through the settlement</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide 2 -->
+                    <div class="gallery-slide">
+                        <img src="https://images.unsplash.com/photo-1528164344705-47542687000d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=70" alt="Traditional Architecture" class="gallery-image">
+                        <div class="gallery-overlay">
+                            <h3 class="gallery-title">Traditional Architecture</h3>
+                            <p>Heritage structures with intricate woodwork and stone foundations</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide 3 -->
+                    <div class="gallery-slide">
+                        <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=70" alt="Misty Morning Landscape" class="gallery-image">
+                        <div class="gallery-overlay">
+                            <h3 class="gallery-title">Misty Morning Landscape</h3>
+                            <p>The hills of Poomala shrouded in morning mist</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide 4 -->
+                    <div class="gallery-slide">
+                        <img src="https://images.unsplash.com/photo-1507697364665-69eec30ea71e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=70" alt="Water Body Reflections" class="gallery-image">
+                        <div class="gallery-overlay">
+                            <h3 class="gallery-title">Water Body Reflections</h3>
+                            <p>Ancient reservoir reflecting the surrounding greenery</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide 5 -->
+                    <div class="gallery-slide">
+                        <img src="https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=70" alt="Traditional Craftsmanship" class="gallery-image">
+                        <div class="gallery-overlay">
+                            <h3 class="gallery-title">Traditional Craftsmanship</h3>
+                            <p>Local artisans practicing age-old techniques</p>
+                        </div>
+                    </div>
+                    
+                    <button class="gallery-nav gallery-prev">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="gallery-nav gallery-next">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+                
+                <div class="gallery-controls">
+                    <button class="gallery-dot active" data-slide="0"></button>
+                    <button class="gallery-dot" data-slide="1"></button>
+                    <button class="gallery-dot" data-slide="2"></button>
+                    <button class="gallery-dot" data-slide="3"></button>
+                    <button class="gallery-dot" data-slide="4"></button>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Tourist Attractions Section -->
+    <section id="attractions" style="background-color: rgba(42, 11, 31, 0.3);">
+        <div class="section-container">
+            <h2 class="section-title">Tourist Attractions</h2>
+            <div class="section-content">
+                <p>Explore the timeless wonders of Poomala and its surroundings, where every site tells a story of cultural heritage and natural beauty.</p>
+            </div>
+            
+            <div class="attractions-list">
+                <!-- Attraction 1 -->
+                <div class="attraction-item">
+                    <img src="https://images.unsplash.com/photo-1528164344705-47542687000d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=70" alt="Ancient Stone Temples" class="attraction-image">
+                    <div class="attraction-content">
+                        <h3 class="attraction-name">Ancient Stone Temples</h3>
+                        <p>Centuries-old temple complexes featuring intricate stone carvings and traditional Kerala architecture. These spiritual sites continue to host ancient rituals and festivals that have been performed for generations.</p>
+                    </div>
+                </div>
+                
+                <!-- Attraction 2 -->
+                <div class="attraction-item">
+                    <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=70" alt="Heritage Walking Trails" class="attraction-image">
+                    <div class="attraction-content">
+                        <h3 class="attraction-name">Heritage Walking Trails</h3>
+                        <p>Meandering pathways through lush forests and alongside pristine water bodies. These trails connect ancient settlements and offer glimpses into traditional ways of life that have been preserved for centuries.</p>
+                    </div>
+                </div>
+                
+                <!-- Attraction 3 -->
+                <div class="attraction-item">
+                    <img src="https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=70" alt="Traditional Craft Villages" class="attraction-image">
+                    <div class="attraction-content">
+                        <h3 class="attraction-name">Traditional Craft Villages</h3>
+                        <p>Visit communities where artisans practice ancient crafts passed down through generations. Witness the creation of traditional textiles, woodwork, and metal crafts using techniques unchanged for hundreds of years.</p>
+                    </div>
+                </div>
+                
+                <!-- Attraction 4 -->
+                <div class="attraction-item">
+                    <img src="https://images.unsplash.com/photo-1507697364665-69eec30ea71e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Natural Water Bodies" class="attraction-image">
+                    <div class="attraction-content">
+                        <h3 class="attraction-name">Natural Water Bodies</h3>
+                        <p>Pristine lakes, ponds, and streams that have sustained life in Poomala for millennia. These water bodies are integral to the region's ecosystem and hold cultural significance in local traditions and rituals.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="section-container">
+            <h2 class="section-title">Connect With Us</h2>
+            <div class="section-content">
+                <p>For inquiries about visiting Poomala, booking heritage stays, or learning more about our cultural experiences, please reach out through any of these channels.</p>
+            </div>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <h3 class="contact-title">Phone</h3>
+                    <p>+91 89213 05929</p>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <h3 class="contact-title">WhatsApp</h3>
+                    <p>+91 89213 05929</p>
+                    <p><em>For resort bookings and inquiries</em></p>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3 class="contact-title">Location</h3>
+                    <p>Poomala, Thrissur District<br>Kerala, India</p>
+                    <p><em>Nearest Airport: Cochin International (COK)<br>Nearest Railway: Thrissur (TCR)</em></p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-logo">Poomala</div>
+            <p class="footer-text">A sanctuary of ancient South Indian heritage, where time flows gently and traditions live on. Experience the spiritual calm and cultural richness of a bygone era, preserved in the heart of Kerala.</p>
+            <p class="copyright">&copy; 2025 Poomala Tourism, Thrissur, Kerala. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Loading animation
+        window.addEventListener('load', function() {
+            const loadingOverlay = document.getElementById('loading-overlay');
+            setTimeout(() => {
+                loadingOverlay.style.opacity = '0';
+                setTimeout(() => {
+                    loadingOverlay.style.display = 'none';
+                }, 1000);
+            }, 1500);
+        });
+        
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mainNav = document.getElementById('mainNav');
+        
+        mobileMenuBtn.addEventListener('click', function() {
+            mainNav.classList.toggle('active');
+        });
+        
+        // Close mobile menu when clicking a link
+        const navLinks = document.querySelectorAll('nav a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                if (mainNav.classList.contains('active')) {
+                    mainNav.classList.remove('active');
+                }
+            });
+        });
+        
+        // Scroll animations
+        function checkVisibility() {
+            const elements = document.querySelectorAll('.section-title, .section-content, .feature-item, .resort-card, .attraction-item');
+            
+            elements.forEach(element => {
+                const rect = element.getBoundingClientRect();
+                const windowHeight = window.innerHeight;
+                
+                if (rect.top <= windowHeight * 0.85) {
+                    element.classList.add('visible');
+                }
+            });
+        }
+        
+        // Initial check
+        checkVisibility();
+        
+        // Check on scroll
+        window.addEventListener('scroll', checkVisibility);
+        
+        // Gallery functionality
+        const gallerySlides = document.querySelectorAll('.gallery-slide');
+        const galleryDots = document.querySelectorAll('.gallery-dot');
+        const prevBtn = document.querySelector('.gallery-prev');
+        const nextBtn = document.querySelector('.gallery-next');
+        let currentSlide = 0;
+        let slideInterval;
+        
+        function showSlide(index) {
+            // Reset all slides
+            gallerySlides.forEach(slide => {
+                slide.classList.remove('active', 'leaving');
+            });
+            
+            galleryDots.forEach(dot => {
+                dot.classList.remove('active');
+            });
+            
+            // Mark current slide as leaving
+            if (gallerySlides[currentSlide]) {
+                gallerySlides[currentSlide].classList.add('leaving');
+            }
+            
+            // Update current slide index
+            currentSlide = index;
+            
+            // Ensure index stays within bounds
+            if (currentSlide >= gallerySlides.length) currentSlide = 0;
+            if (currentSlide < 0) currentSlide = gallerySlides.length - 1;
+            
+            // Show new slide
+            gallerySlides[currentSlide].classList.add('active');
+            galleryDots[currentSlide].classList.add('active');
+            
+            // Remove leaving class after transition
+            setTimeout(() => {
+                gallerySlides.forEach(slide => {
+                    slide.classList.remove('leaving');
+                });
+            }, 1500);
+        }
+        
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+        }
+        
+        function prevSlide() {
+            showSlide(currentSlide - 1);
+        }
+        
+        // Initialize gallery
+        function initGallery() {
+            // Start automatic sliding
+            slideInterval = setInterval(nextSlide, 6000);
+            
+            // Event listeners for dots
+            galleryDots.forEach((dot, index) => {
+                dot.addEventListener('click', function() {
+                    clearInterval(slideInterval);
+                    showSlide(index);
+                    slideInterval = setInterval(nextSlide, 6000);
+                });
+            });
+            
+            // Event listeners for nav buttons
+            prevBtn.addEventListener('click', function() {
+                clearInterval(slideInterval);
+                prevSlide();
+                slideInterval = setInterval(nextSlide, 6000);
+            });
+            
+            nextBtn.addEventListener('click', function() {
+                clearInterval(slideInterval);
+                nextSlide();
+                slideInterval = setInterval(nextSlide, 6000);
+            });
+            
+            // Pause on hover
+            const galleryMain = document.querySelector('.gallery-main');
+            galleryMain.addEventListener('mouseenter', function() {
+                clearInterval(slideInterval);
+            });
+            
+            galleryMain.addEventListener('mouseleave', function() {
+                slideInterval = setInterval(nextSlide, 6000);
+            });
+        }
+        
+        // Initialize gallery after page loads
+        window.addEventListener('load', initGallery);
+        
+        // WhatsApp booking functionality
+        const bookButtons = document.querySelectorAll('.book-button');
+        
+        bookButtons.forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                const resortName = this.getAttribute('data-resort');
+                const encodedResortName = encodeURIComponent(resortName);
+                const whatsappUrl = `https://wa.me/918921305929?text=Hello%20I%20would%20like%20to%20book%20a%20stay%20at%20${encodedResortName}%20in%20Poomala.%20Please%20share%20availability%20and%20tariff%20details.`;
+                window.open(whatsappUrl, '_blank');
+            });
+        });
+        
+        // Parallax effect for hero background
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const heroBackground = document.querySelector('.hero-background');
+            if (heroBackground) {
+                heroBackground.style.transform = `scale(1.05) translateY(${scrolled * 0.3}px)`;
+            }
+            
+            // Header background on scroll
+            const header = document.querySelector('header');
+            if (scrolled > 50) {
+                header.style.backgroundColor = 'rgba(42, 11, 31, 0.98)';
+                header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.3)';
+            } else {
+                header.style.backgroundColor = 'rgba(42, 11, 31, 0.95)';
+                header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.3)';
+            }
+        });
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 70, // Adjusted for smaller header
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
