@@ -38,7 +38,7 @@
             --title-font: 'Cormorant SC', serif;
             
             /* Spacing */
-            --section-padding: 5rem 1.5rem;
+            --section-padding: 3rem 1.5rem; /* Reduced for mobile */
             --container-max: 1200px;
         }
         
@@ -50,7 +50,7 @@
         
         html {
             scroll-behavior: smooth;
-            font-size: 18px;
+            font-size: 16px; /* Smaller base font for mobile */
         }
         
         /* CHANGE 1: Darker background color */
@@ -58,7 +58,7 @@
             font-family: var(--serif-font);
             background-color: #2a0b1f; /* Darker background */
             color: var(--old-gold); /* CHANGE 3: Golden color for text */
-            line-height: 1.7;
+            line-height: 1.6;
             overflow-x: hidden;
             position: relative;
         }
@@ -94,8 +94,8 @@
         }
         
         .loading-element {
-            width: 80px;
-            height: 80px;
+            width: 60px;
+            height: 60px;
             border: 3px solid transparent;
             border-top: 3px solid var(--old-gold);
             border-radius: 50%;
@@ -126,16 +126,16 @@
             50% { transform: rotate(-180deg); }
         }
         
-        /* CHANGE 2: Smaller navigation bar with golden text */
+        /* CHANGE 2: Smaller navigation bar with golden text - MOBILE FIRST */
         header {
             position: fixed;
             top: 0;
             width: 100%;
-            background-color: rgba(42, 11, 31, 0.95); /* Darker background */
+            background-color: rgba(42, 11, 31, 0.98); /* Darker background */
             backdrop-filter: blur(12px); /* Enhanced blur */
             z-index: 1000;
             border-bottom: 2px solid rgba(193, 154, 63, 0.2); /* Gold border */
-            padding: 0.5rem 2rem; /* Smaller padding */
+            padding: 0.5rem 1rem; /* Smaller padding */
             transition: all 0.5s ease;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
         }
@@ -150,7 +150,7 @@
         
         .logo {
             font-family: var(--title-font);
-            font-size: 1.8rem; /* Slightly smaller */
+            font-size: 1.6rem; /* Smaller for mobile */
             font-weight: 600;
             color: var(--old-gold); /* Golden color */
             letter-spacing: 1px;
@@ -175,21 +175,51 @@
             transform: scaleX(1);
         }
         
+        /* Mobile menu button always visible */
+        .mobile-menu-btn {
+            display: block;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--old-gold); /* Golden color */
+            cursor: pointer;
+            z-index: 1001;
+        }
+        
+        /* MOBILE NAVIGATION - Default state for mobile */
         nav ul {
-            display: flex;
+            position: fixed;
+            top: 60px;
+            left: 0;
+            width: 100%;
+            background-color: rgba(42, 11, 31, 0.98); /* Darker background */
+            flex-direction: column;
+            padding: 1.5rem;
+            gap: 1rem;
+            transform: translateY(-100%);
+            opacity: 0;
+            transition: transform 0.5s ease, opacity 0.5s ease;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+            border-top: 2px solid rgba(193, 154, 63, 0.3); /* Gold border */
             list-style: none;
-            gap: 2rem; /* Reduced gap */
+            z-index: 1000;
+        }
+        
+        nav ul.active {
+            transform: translateY(0);
+            opacity: 1;
         }
         
         nav a {
             font-family: var(--title-font);
-            font-size: 1rem; /* Smaller font */
+            font-size: 1.1rem; /* Mobile font size */
             color: var(--old-gold); /* CHANGE 3: Golden color for text */
             text-decoration: none;
             position: relative;
-            padding: 0.4rem 0.8rem; /* Adjusted padding */
+            padding: 0.5rem 0;
             transition: all 0.3s ease;
             letter-spacing: 0.5px;
+            display: block;
         }
         
         nav a::after {
@@ -212,18 +242,10 @@
             width: 100%;
         }
         
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            color: var(--old-gold); /* Golden color */
-            cursor: pointer;
-        }
-        
-        /* Hero Section - Full-screen immersive experience */
+        /* Hero Section - Mobile first */
         .hero {
             height: 100vh;
+            min-height: 600px;
             position: relative;
             overflow: hidden;
             display: flex;
@@ -263,7 +285,7 @@
         
         .hero-content {
             max-width: 900px;
-            padding: 2rem;
+            padding: 1.5rem;
             opacity: 0;
             transform: translateY(30px);
             animation: dignifiedFadeIn 2.5s ease forwards 0.5s;
@@ -278,18 +300,18 @@
         
         .hero h1 {
             font-family: var(--title-font);
-            font-size: 4.5rem;
+            font-size: 2.8rem; /* Smaller for mobile */
             font-weight: 400;
             margin-bottom: 1.5rem;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
             text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
             line-height: 1.2;
             color: var(--old-gold); /* CHANGE 3: Golden color for text */
         }
         
         .hero p {
-            font-size: 1.5rem;
-            margin-bottom: 3rem;
+            font-size: 1.1rem; /* Smaller for mobile */
+            margin-bottom: 2.5rem;
             max-width: 700px;
             margin-left: auto;
             margin-right: auto;
@@ -300,12 +322,12 @@
         
         .hero-cta {
             display: inline-block;
-            padding: 1rem 2.5rem;
+            padding: 0.9rem 2rem;
             background-color: transparent;
             color: var(--old-gold); /* CHANGE 3: Golden color for text */
             border: 2px solid var(--old-gold); /* CHANGE 3: Golden border */
             font-family: var(--title-font);
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             text-decoration: none;
             letter-spacing: 1px;
             transition: all 0.5s ease;
@@ -334,7 +356,7 @@
             left: 100%;
         }
         
-        /* Main Content Sections */
+        /* Main Content Sections - Mobile first */
         section {
             padding: var(--section-padding);
             position: relative;
@@ -347,11 +369,11 @@
         
         .section-title {
             font-family: var(--title-font);
-            font-size: 3rem;
+            font-size: 2.2rem; /* Smaller for mobile */
             font-weight: 400;
             color: var(--old-gold); /* CHANGE 3: Golden color for text */
             text-align: center;
-            margin-bottom: 4rem;
+            margin-bottom: 3rem;
             position: relative;
             opacity: 0;
             transform: translateY(30px);
@@ -361,10 +383,10 @@
         .section-title::after {
             content: '';
             position: absolute;
-            bottom: -15px;
+            bottom: -10px;
             left: 50%;
             transform: translateX(-50%);
-            width: 120px;
+            width: 100px;
             height: 2px;
             background-color: var(--old-gold);
         }
@@ -375,8 +397,8 @@
         }
         
         .section-content {
-            font-size: 1.2rem;
-            line-height: 1.8;
+            font-size: 1.1rem; /* Smaller for mobile */
+            line-height: 1.7;
             color: var(--sandstone-beige); /* Lighter color for better contrast on dark */
             max-width: 900px;
             margin: 0 auto 3rem;
@@ -391,17 +413,17 @@
             transform: translateY(0);
         }
         
-        /* About Section */
+        /* About Section - Mobile first */
         .about-features {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 3rem;
-            margin-top: 4rem;
+            grid-template-columns: 1fr; /* Single column on mobile */
+            gap: 2rem;
+            margin-top: 3rem;
         }
         
         .feature-item {
             text-align: center;
-            padding: 2rem;
+            padding: 1.8rem;
             background-color: rgba(42, 11, 31, 0.7); /* Darker background */
             border-radius: 2px;
             border: 1px solid rgba(193, 154, 63, 0.2); /* Gold border */
@@ -423,23 +445,23 @@
         }
         
         .feature-icon {
-            font-size: 3rem;
+            font-size: 2.5rem; /* Smaller for mobile */
             color: var(--old-gold);
             margin-bottom: 1.5rem;
         }
         
         .feature-title {
             font-family: var(--title-font);
-            font-size: 1.8rem;
+            font-size: 1.6rem; /* Smaller for mobile */
             color: var(--old-gold); /* CHANGE 3: Golden color for text */
             margin-bottom: 1rem;
         }
         
-        /* Resorts Section */
+        /* Resorts Section - Mobile first */
         .resorts-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 3rem;
+            grid-template-columns: 1fr; /* Single column on mobile */
+            gap: 2.5rem;
             margin-top: 3rem;
         }
         
@@ -479,7 +501,7 @@
         }
         
         .resort-image {
-            height: 250px;
+            height: 220px; /* Smaller for mobile */
             width: 100%;
             object-fit: cover;
             filter: sepia(0.2) brightness(0.95);
@@ -491,14 +513,14 @@
         }
         
         .resort-content {
-            padding: 2rem;
+            padding: 1.8rem;
             position: relative;
             z-index: 2;
         }
         
         .resort-name {
             font-family: var(--title-font);
-            font-size: 2rem;
+            font-size: 1.8rem; /* Smaller for mobile */
             color: var(--old-gold); /* CHANGE 3: Golden color for text */
             margin-bottom: 1rem;
         }
@@ -506,7 +528,8 @@
         .resort-description {
             margin-bottom: 1.5rem;
             color: var(--sandstone-beige); /* Lighter text */
-            line-height: 1.7;
+            line-height: 1.6;
+            font-size: 1rem;
         }
         
         .book-button {
@@ -530,18 +553,18 @@
             box-shadow: 0 8px 16px rgba(70, 11, 47, 0.2);
         }
         
-        /* Gallery Section */
+        /* Gallery Section - Mobile first */
         .gallery-container {
             max-width: 1200px;
-            margin: 4rem auto 0;
+            margin: 3rem auto 0;
             position: relative;
             overflow: hidden;
             border: 1px solid rgba(193, 154, 63, 0.3); /* Gold border */
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
         }
         
         .gallery-main {
-            height: 500px;
+            height: 350px; /* Smaller for mobile */
             position: relative;
             overflow: hidden;
         }
@@ -579,7 +602,7 @@
             bottom: 0;
             left: 0;
             width: 100%;
-            padding: 2rem;
+            padding: 1.5rem;
             background: linear-gradient(to top, rgba(70, 11, 47, 0.7), transparent);
             color: var(--antique-ivory);
             z-index: 3;
@@ -595,7 +618,7 @@
         
         .gallery-title {
             font-family: var(--title-font);
-            font-size: 2rem;
+            font-size: 1.6rem; /* Smaller for mobile */
             margin-bottom: 0.5rem;
             color: var(--old-gold); /* CHANGE 3: Golden color for text */
         }
@@ -603,13 +626,14 @@
         .gallery-controls {
             display: flex;
             justify-content: center;
-            gap: 1rem;
-            margin-top: 2rem;
+            gap: 0.8rem;
+            margin-top: 1.5rem;
+            padding: 0 1rem 1rem;
         }
         
         .gallery-dot {
-            width: 12px;
-            height: 12px;
+            width: 10px;
+            height: 10px;
             border-radius: 50%;
             background-color: rgba(123, 98, 77, 0.3);
             border: none;
@@ -633,9 +657,9 @@
             background-color: rgba(42, 11, 31, 0.8); /* Darker background */
             color: var(--old-gold); /* Golden color */
             border: none;
-            width: 50px;
-            height: 50px;
-            font-size: 1.5rem;
+            width: 40px; /* Smaller for mobile */
+            height: 40px;
+            font-size: 1.2rem;
             cursor: pointer;
             z-index: 4;
             transition: all 0.5s ease;
@@ -652,75 +676,79 @@
         }
         
         .gallery-prev {
-            left: 20px;
+            left: 10px;
         }
         
         .gallery-next {
-            right: 20px;
+            right: 10px;
         }
         
-        /* Tourist Attractions */
+        /* Tourist Attractions - Mobile first */
         .attractions-list {
             max-width: 900px;
-            margin: 4rem auto 0;
+            margin: 3rem auto 0;
         }
         
         .attraction-item {
             display: flex;
+            flex-direction: column; /* Stack on mobile */
             align-items: center;
-            margin-bottom: 4rem;
+            margin-bottom: 3rem;
             opacity: 0;
-            transform: translateX(-30px);
+            transform: translateY(30px);
             transition: opacity 0.8s ease, transform 0.8s ease;
         }
         
         .attraction-item.visible {
             opacity: 1;
-            transform: translateX(0);
+            transform: translateY(0);
         }
         
+        /* Remove even/odd transformations for mobile */
         .attraction-item:nth-child(even) {
-            flex-direction: row-reverse;
-            transform: translateX(30px);
+            flex-direction: column;
+            transform: translateY(30px);
         }
         
         .attraction-item:nth-child(even).visible {
-            transform: translateX(0);
+            transform: translateY(0);
         }
         
         .attraction-image {
-            width: 45%;
-            height: 300px;
+            width: 100%; /* Full width on mobile */
+            height: 250px; /* Smaller for mobile */
             object-fit: cover;
             filter: sepia(0.2) brightness(0.9);
             border-radius: 2px;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            margin-bottom: 1.5rem;
         }
         
         .attraction-content {
-            width: 55%;
-            padding: 2rem;
+            width: 100%; /* Full width on mobile */
+            padding: 0;
             color: var(--sandstone-beige); /* Lighter text */
+            text-align: center;
         }
         
         .attraction-name {
             font-family: var(--title-font);
-            font-size: 2.2rem;
+            font-size: 1.8rem; /* Smaller for mobile */
             color: var(--old-gold); /* CHANGE 3: Golden color for text */
             margin-bottom: 1rem;
         }
         
-        /* Contact Section */
+        /* Contact Section - Mobile first */
         .contact-info {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
-            margin-top: 4rem;
+            grid-template-columns: 1fr; /* Single column on mobile */
+            gap: 2rem;
+            margin-top: 3rem;
         }
         
         .contact-item {
             text-align: center;
-            padding: 2rem;
+            padding: 1.8rem;
             background-color: rgba(42, 11, 31, 0.7); /* Darker background */
             border-radius: 2px;
             border: 1px solid rgba(193, 154, 63, 0.2); /* Gold border */
@@ -728,23 +756,23 @@
         }
         
         .contact-icon {
-            font-size: 2.5rem;
+            font-size: 2.2rem; /* Smaller for mobile */
             color: var(--old-gold);
             margin-bottom: 1.5rem;
         }
         
         .contact-title {
             font-family: var(--title-font);
-            font-size: 1.5rem;
+            font-size: 1.4rem; /* Smaller for mobile */
             color: var(--old-gold); /* CHANGE 3: Golden color for text */
             margin-bottom: 1rem;
         }
         
-        /* Footer */
+        /* Footer - Mobile first */
         footer {
             background-color: var(--earth-dark);
             color: var(--old-gold); /* CHANGE 3: Golden color for text */
-            padding: 4rem 1.5rem 2rem;
+            padding: 3rem 1.5rem 2rem;
             text-align: center;
             border-top: 3px solid var(--old-gold);
         }
@@ -756,137 +784,25 @@
         
         .footer-logo {
             font-family: var(--title-font);
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
+            font-size: 2rem; /* Smaller for mobile */
+            margin-bottom: 1.5rem;
             color: var(--old-gold); /* CHANGE 3: Golden color for text */
         }
         
         .footer-text {
             max-width: 600px;
-            margin: 0 auto 3rem;
-            line-height: 1.8;
+            margin: 0 auto 2rem;
+            line-height: 1.7;
             opacity: 0.9;
             color: var(--sandstone-beige); /* Lighter text */
+            font-size: 1rem;
         }
         
         .copyright {
-            padding-top: 2rem;
+            padding-top: 1.5rem;
             border-top: 1px solid rgba(193, 154, 63, 0.2); /* Gold border */
             font-size: 0.9rem;
             opacity: 0.7;
-        }
-        
-        /* Responsive Design */
-        @media (max-width: 992px) {
-            .hero h1 {
-                font-size: 3.5rem;
-            }
-            
-            .section-title {
-                font-size: 2.5rem;
-            }
-            
-            .attraction-item {
-                flex-direction: column;
-                transform: translateY(30px) !important;
-            }
-            
-            .attraction-item.visible {
-                transform: translateY(0) !important;
-            }
-            
-            .attraction-image, .attraction-content {
-                width: 100%;
-            }
-            
-            .attraction-image {
-                margin-bottom: 2rem;
-                height: 250px;
-            }
-            
-            .gallery-main {
-                height: 400px;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            header {
-                padding: 0.8rem 1rem; /* Smaller on mobile */
-            }
-            
-            .mobile-menu-btn {
-                display: block;
-            }
-            
-            nav ul {
-                position: fixed;
-                top: 60px; /* Adjusted for smaller header */
-                left: 0;
-                width: 100%;
-                background-color: rgba(42, 11, 31, 0.98); /* Darker background */
-                flex-direction: column;
-                padding: 1.5rem;
-                gap: 1rem;
-                transform: translateY(-100%);
-                opacity: 0;
-                transition: transform 0.5s ease, opacity 0.5s ease;
-                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
-                border-top: 2px solid rgba(193, 154, 63, 0.3); /* Gold border */
-            }
-            
-            nav ul.active {
-                transform: translateY(0);
-                opacity: 1;
-            }
-            
-            .hero h1 {
-                font-size: 2.8rem;
-            }
-            
-            .hero p {
-                font-size: 1.2rem;
-            }
-            
-            .section-title {
-                font-size: 2.2rem;
-                margin-bottom: 3rem;
-            }
-            
-            .resorts-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .gallery-main {
-                height: 300px;
-            }
-            
-            .gallery-nav {
-                width: 40px;
-                height: 40px;
-                font-size: 1.2rem;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .hero h1 {
-                font-size: 2.2rem;
-            }
-            
-            .hero p {
-                font-size: 1.1rem;
-            }
-            
-            .section-title {
-                font-size: 1.8rem;
-            }
-            
-            .feature-item, .resort-card, .contact-item {
-                padding: 1.5rem;
-            }
-            
-            .gallery-main {
-                height: 250px;
-            }
         }
         
         /* Ancient visual effects */
@@ -910,7 +826,210 @@
             height: 100%;
             pointer-events: none;
             z-index: 9997;
-            box-shadow: inset 0 0 150px rgba(70, 11, 47, 0.1);
+            box-shadow: inset 0 0 100px rgba(70, 11, 47, 0.1); /* Reduced for mobile */
+        }
+        
+        /* DESKTOP STYLES - Media queries for larger screens */
+        @media (min-width: 768px) {
+            html {
+                font-size: 18px; /* Larger base font for desktop */
+            }
+            
+            header {
+                padding: 0.5rem 2rem;
+            }
+            
+            .logo {
+                font-size: 1.8rem;
+            }
+            
+            /* Desktop navigation - show inline */
+            nav ul {
+                position: static;
+                flex-direction: row;
+                padding: 0;
+                transform: none;
+                opacity: 1;
+                background: transparent;
+                box-shadow: none;
+                border-top: none;
+                display: flex;
+                gap: 2rem;
+            }
+            
+            .mobile-menu-btn {
+                display: none; /* Hide menu button on desktop */
+            }
+            
+            nav a {
+                font-size: 1rem;
+                padding: 0.4rem 0.8rem;
+                display: inline;
+            }
+            
+            .hero h1 {
+                font-size: 4.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.5rem;
+            }
+            
+            .section-title {
+                font-size: 3rem;
+                margin-bottom: 4rem;
+            }
+            
+            .section-title::after {
+                width: 120px;
+                bottom: -15px;
+            }
+            
+            .section-content {
+                font-size: 1.2rem;
+                line-height: 1.8;
+            }
+            
+            .about-features {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 3rem;
+                margin-top: 4rem;
+            }
+            
+            .feature-item {
+                padding: 2rem;
+            }
+            
+            .feature-icon {
+                font-size: 3rem;
+            }
+            
+            .feature-title {
+                font-size: 1.8rem;
+            }
+            
+            .resorts-grid {
+                grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+                gap: 3rem;
+            }
+            
+            .resort-image {
+                height: 250px;
+            }
+            
+            .resort-name {
+                font-size: 2rem;
+            }
+            
+            .resort-content {
+                padding: 2rem;
+            }
+            
+            .gallery-main {
+                height: 500px;
+            }
+            
+            .gallery-title {
+                font-size: 2rem;
+            }
+            
+            .gallery-controls {
+                margin-top: 2rem;
+                gap: 1rem;
+            }
+            
+            .gallery-nav {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+            }
+            
+            .gallery-prev {
+                left: 20px;
+            }
+            
+            .gallery-next {
+                right: 20px;
+            }
+            
+            .attraction-item {
+                flex-direction: row;
+                margin-bottom: 4rem;
+                transform: translateX(-30px);
+            }
+            
+            .attraction-item:nth-child(even) {
+                flex-direction: row-reverse;
+                transform: translateX(30px);
+            }
+            
+            .attraction-image {
+                width: 45%;
+                height: 300px;
+                margin-bottom: 0;
+            }
+            
+            .attraction-content {
+                width: 55%;
+                padding: 2rem;
+                text-align: left;
+            }
+            
+            .attraction-item:nth-child(even) .attraction-content {
+                text-align: right;
+            }
+            
+            .attraction-name {
+                font-size: 2.2rem;
+            }
+            
+            .contact-info {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 3rem;
+                margin-top: 4rem;
+            }
+            
+            .contact-item {
+                padding: 2rem;
+            }
+            
+            .contact-icon {
+                font-size: 2.5rem;
+            }
+            
+            .contact-title {
+                font-size: 1.5rem;
+            }
+            
+            .footer-logo {
+                font-size: 2.5rem;
+            }
+            
+            .footer-text {
+                margin-bottom: 3rem;
+                font-size: 1.1rem;
+            }
+            
+            .vignette {
+                box-shadow: inset 0 0 150px rgba(70, 11, 47, 0.1);
+            }
+        }
+        
+        @media (min-width: 992px) {
+            .hero-content {
+                padding: 2rem;
+            }
+            
+            .section-title {
+                font-size: 3rem;
+            }
+        }
+        
+        /* For very large screens */
+        @media (min-width: 1200px) {
+            .gallery-container {
+                margin: 4rem auto 0;
+            }
         }
     </style>
 </head>
@@ -1155,11 +1274,8 @@
                         <p>Vattayi Waterfall is a hidden natural cascade near Poomala, best visited during the monsoon, where fresh streams, rocks, and greenery create a refreshing escape into nature.</p>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Attraction 5 -->
+                
+                <!-- Attraction 5 -->
                 <div class="attraction-item">
                     <img src="pambooram para.jpg" alt="Pambooram Para" class="attraction-image">
                     <div class="attraction-content">
@@ -1167,11 +1283,8 @@
                         <p>Pambooram Para is a scenic hilltop near Poomala offering wide valley views, cool winds, and a peaceful atmosphere—perfect for sunset watching and quiet nature moments.</p>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Attraction 6 -->
+                
+                <!-- Attraction 6 -->
                 <div class="attraction-item">
                     <img src="cheppara.jpg" alt="Cheppara" class="attraction-image">
                     <div class="attraction-content">
@@ -1413,7 +1526,7 @@
                 const targetElement = document.querySelector(targetId);
                 if (targetElement) {
                     window.scrollTo({
-                        top: targetElement.offsetTop - 70, // Adjusted for smaller header
+                        top: targetElement.offsetTop - 70,
                         behavior: 'smooth'
                     });
                 }
